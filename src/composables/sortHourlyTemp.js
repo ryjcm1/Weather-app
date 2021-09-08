@@ -36,7 +36,7 @@ const hourlyWeather = (listOfHourlyWeather,timezone) => {
         tempList.push(listObjectFrag)
     }
 
-    console.log(tempList)
+    // console.log(tempList)
     return tempList
 
 }

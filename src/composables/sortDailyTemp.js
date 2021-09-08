@@ -38,7 +38,7 @@ const timeTempWeather = (listOfDailyTemp,timezone) => {
         tempList.push(listObjectFrag)
     }
 
-    console.log(tempList)
+    // console.log(tempList)
     return tempList
 
 }

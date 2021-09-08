@@ -41,7 +41,11 @@
           
           <div class="demo-graph" v-if="toggleGraph">
             <div class="chartArea">
-              <Chart :chartData="hourlyTempList"  :options="chartOptions" label="Temperature" :chartColors="chartColors"></Chart>
+              <Chart
+              :chartData="hourlyTempList"
+              label="Temperature"
+              :options="chartOptions"
+              :styles="myStyles"></Chart>
             </div>
           </div>
 
@@ -62,7 +66,7 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import getGeolocation from '../composables/getGeolocation'
 import getWeather from '../composables/getWeather'
 import getDateTime from '../composables/getDateTime'
@@ -71,11 +75,6 @@ import sortHourlyTemp from '../composables/sortHourlyTemp'
 import DailyTemp from '../components/DailyTemp.vue'
 import Chart from '../components/Chart.vue'
 import MoreDetail from '../components/MoreDetail.vue'
-
-
-
-
-// import HourlyTempGraph from '../components/HourlyTempGraph.vue'
 
 
 export default {
@@ -110,19 +109,10 @@ export default {
     const {timeTempWeather} = sortDailyTemp()
     const {hourlyWeather} = sortHourlyTemp()
 
-
-    //chart properties
-    const chartColors = ref({
-      borderColor: "#82ac75",
-      pointBorderColor: "#439473" ,
-      pointBackgroundColor: "#cee5d0" ,
-      backgroundColor: "#cee5d0"
-    })
-
     //styling chart
     const chartOptions = ref({
       responsive: true,
-      maintainAspectRatio: true ,
+      maintainAspectRatio: false ,
       spanGaps:true,
       legend:{
         display:false
@@ -132,14 +122,12 @@ export default {
       },
       elements:{
         point:{
-          radius: 0.7
+          radius: 0,
+          hitRadius: 3,
+          hoverRadius: 3
         }
       },
       scales:{
-        xAxes:{
-          display: true,
-          color: '#191'
-        },
         yAxes:[{
           ticks: {
             beginAtZero: false,
@@ -148,6 +136,14 @@ export default {
         }
       }
     )
+
+    //resizing chart
+    const myStyles =computed(()=>{
+      return {
+        height: '185px',
+        position: 'relative'
+      }
+    })
 
     //handle dynamic pictures
     const getImage = (path) =>{
@@ -213,11 +209,11 @@ export default {
     hourlyTempList,
     loadComplete,
     chartOptions,
-    chartColors,
     currentTemp,
     getImage,
     toggleDetails,
-    toggleGraph
+    toggleGraph,
+    myStyles
     }
 
   }
@@ -259,7 +255,7 @@ export default {
 
   .location{
     width: 100%;
-    height:15%;
+    height:17%;
     display: flex;
     text-align: center;
    
@@ -288,7 +284,7 @@ export default {
 
   .update{
     width: 100%;
-    height: 5%;
+    height: 3%;
     margin-left: 2em;
     font-family: Poppins;
     font-size: 0.8em;
@@ -299,6 +295,7 @@ export default {
     font-size: 0.7em;
     font-weight: 700;
     color: rgb(129, 129, 129);
+    margin-left: 0.5em;
   }
 
   .main-info{
@@ -346,7 +343,7 @@ export default {
 
   .info-card span{
     font-size: 0.8em;
-    font-family: bitter;
+    font-family: Poppins;
     color: #f8f8f8d7;
     text-transform: capitalize;
     font-weight: bold;
@@ -354,10 +351,10 @@ export default {
   }
 
   .icon{
-    width: 140px;
-    height: 140px;
+    width: 135px;
+    height: 135px;
     position: absolute;
-    top: 45%;
+    top: 46%;
   }
 
   .icon img{
@@ -488,9 +485,10 @@ export default {
   }
 
   .chartArea{
+    padding-top: 8px;
     position: relative;
     height: 100%;
-    width: 80%;
+    width:100%;
   }
 
 

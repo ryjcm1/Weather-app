@@ -16,29 +16,23 @@ export default defineComponent({
     label:{
         type: String,
         required: false
-    },
-    chartColors:{
-        type: Object,
-        require: false
     }
   },
   mounted () {
     // this.renderChart(this.chartData, this.chartOptions)
     const times = this.chartData.map(d=>d.time)
     const temps = this.chartData.map(d=>d.temp)
-    const {borderColor, pointBorderColor, pointBackgroundColor, backgroundColor} = this.chartColors
 
     this.renderChart({
         labels: times,
         datasets: [
             {
                 label: this.label,
-                backgroundColor: '#191',
                 data: temps,
-                borderColor: borderColor,
-                pointBorderColor: pointBorderColor,
-                pointBackgroundColor: pointBackgroundColor,
-                backgroundColor: backgroundColor
+                borderColor: "none",
+                pointBorderColor: "#f9daf8",
+                pointBackgroundColor: "#f9daf8",
+                backgroundColor: "#e6c4e5"
             }
         ]
     },
@@ -48,8 +42,7 @@ export default defineComponent({
 
   updated(){
     const times = this.chartData.map(d=>d.time)
-    const temps = this.chartData.map(d=>d.temp)
-    const {borderColor, pointBorderColor, pointBackgroundColor, backgroundColor} = this.chartColors
+    const temps = this.chartData.map(d=>d.temp)    
 
 
     this.renderChart({
@@ -57,12 +50,11 @@ export default defineComponent({
         datasets: [
             {
                 label: this.label,
-                backgroundColor: '#191',
                 data: temps,
-                borderColor: borderColor,
-                pointBorderColor: pointBorderColor,
-                pointBackgroundColor: pointBackgroundColor,
-                backgroundColor: backgroundColor
+                borderColor: "none",
+                pointBorderColor: "#f9daf8",
+                pointBackgroundColor: "#f9daf8",
+                backgroundColor: "#e6c4e5"
             }
         ]
     },

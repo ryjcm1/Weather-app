@@ -16,8 +16,8 @@
 ## About The Project
 Simple weather forcast web application practicing Vue components and hooks.
 
-<!-- <img src="screenshot/UI.png" alt="Weather Journal UI" width="389" height="auto">
- -->
+<img src="weather-app-ui.png" alt="Weather Journal UI" width="389" height="auto">
+
 
 ## Getting Started
 
@@ -55,7 +55,7 @@ npm run build
   
   
 ## Acknowledgements
-<a href="https://www.alessioatzeni.com/meteocons/#">Meteocons</a>
+<a href="https://github.com/basmilius/weather-icons">Basmilius Weather Icons</a>
 
 
 

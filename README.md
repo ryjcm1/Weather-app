@@ -14,6 +14,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+Simple weather forcast web application practicing Vue components and hooks.
 
 <!-- <img src="screenshot/UI.png" alt="Weather Journal UI" width="389" height="auto">
  -->
